@@ -1,0 +1,20 @@
+<!-- ingreso-datos.component.html -->
+<div class="container">
+  <h2>Buscar Cliente</h2>
+  <form (ngSubmit)="onSubmit()" #form="ngForm">
+    <div class="form-group">
+      <label for="tipoDocumento">Tipo de Documento</label>
+      <select [(ngModel)]="tipoDocumento" name="tipoDocumento" class="form-control" required>
+        <option value="" disabled>Seleccione...</option>
+        <option value="C">Cédula de Ciudadanía</option>
+        <option value="P">Pasaporte</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="numeroDocumento">Número de Documento</label>
+      <input type="text" [(ngModel)]="numeroDocumento" name="numeroDocumento" class="form-control" 
+        pattern="\d+" minlength="8" maxlength="11" required (input)="formatNumber()">
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Buscar</button>
+  </form>
+</div>
